@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prina Pandya | Junior Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --card: rgba(30, 41, 59, 0.78);
+      --card-2: rgba(15, 23, 42, 0.84);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --green: #22c55e;
+      --amber: #f59e0b;
+      --border: rgba(148, 163, 184, 0.22);
+      --shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34%),
+        radial-gradient(circle at 70% 15%, rgba(34, 197, 94, 0.10), transparent 30%),
+        linear-gradient(135deg, var(--bg-soft), var(--bg));
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(2, 6, 23, 0.76);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -0.04em; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(34, 197, 94, 0.82));
+      color: #020617;
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.24);
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 0.92rem; font-weight: 700; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .hero { padding: 88px 0 70px; }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 44px; align-items: center; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+      margin-bottom: 22px;
+    }
+
+    h1 span { color: var(--accent); text-shadow: 0 0 48px rgba(56, 189, 248, 0.34); }
+    .hero-subtitle { max-width: 720px; color: var(--muted); font-size: 1.12rem; margin-bottom: 28px; }
+
+    .role-strip {
+      display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 26px;
+    }
+
+    .role-pill {
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: #bae6fd;
+      background: rgba(56, 189, 248, 0.09);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      font-weight: 700;
+      font-size: 0.86rem;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 13px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      font-weight: 900;
+      transition: transform 0.2s ease, border 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #0ea5e9); color: #020617; border-color: transparent; box-shadow: 0 16px 46px rgba(56, 189, 248, 0.22); }
+    .btn-secondary { background: rgba(15, 23, 42, 0.72); color: var(--text); }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .stat { padding: 17px; border: 1px solid var(--border); border-radius: 20px; background: rgba(15, 23, 42, 0.64); }
+    .stat strong { display: block; color: var(--accent); font-size: 1.5rem; line-height: 1; margin-bottom: 7px; }
+    .stat span { color: var(--muted); font-size: 0.86rem; }
+
+    .profile-card { position: relative; padding: 26px; border: 1px solid var(--border); border-radius: 32px; background: linear-gradient(180deg, rgba(30, 41, 59, 0.93), rgba(15, 23, 42, 0.88)); box-shadow: var(--shadow); overflow: hidden; }
+    .profile-card::before { content: ""; position: absolute; inset: -80px -80px auto auto; width: 230px; height: 230px; background: rgba(56, 189, 248, 0.18); border-radius: 999px; filter: blur(8px); }
+
+    .terminal { position: relative; border: 1px solid rgba(56, 189, 248, 0.28); border-radius: 22px; background: #020617; overflow: hidden; }
+    .terminal-header { display: flex; align-items: center; gap: 8px; padding: 14px 16px; background: rgba(15, 23, 42, 0.94); border-bottom: 1px solid var(--border); }
+    .dot { width: 11px; height: 11px; border-radius: 99px; background: var(--accent); opacity: 0.9; }
+    .dot:nth-child(2) { background: var(--green); }
+    .dot:nth-child(3) { background: var(--amber); }
+    .terminal-body { padding: 22px; color: #cbd5e1; font-family: Consolas, monospace; font-size: 0.9rem; }
+    .terminal-body p { margin-bottom: 12px; }
+    .cmd { color: var(--accent); }
+    .success { color: var(--green); }
+
+    section { padding: 74px 0; }
+    .section-heading { max-width: 760px; margin-bottom: 32px; }
+    .label { color: var(--accent); font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.78rem; margin-bottom: 8px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.15rem); line-height: 1.05; letter-spacing: -0.055em; margin-bottom: 14px; }
+    .section-heading p { color: var(--muted); font-size: 1.05rem; }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { border: 1px solid var(--border); border-radius: 24px; padding: 22px; background: var(--card); box-shadow: 0 20px 48px rgba(0,0,0,0.2); transition: transform 0.2s ease, border 0.2s ease; }
+    .card:hover { transform: translateY(-5px); border-color: rgba(56, 189, 248, 0.5); }
+    .icon { width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; background: rgba(56, 189, 248, 0.12); color: var(--accent); margin-bottom: 16px; font-size: 1.1rem; }
+    .card h3 { font-size: 1.12rem; margin-bottom: 8px; }
+    .card p, .card li { color: var(--muted); font-size: 0.95rem; }
+
+    .skill-cloud { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .skill { padding: 8px 11px; border-radius: 999px; background: rgba(148, 163, 184, 0.08); border: 1px solid var(--border); color: #cbd5e1; font-size: 0.86rem; font-weight: 700; }
+
+    .project { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 24px; align-items: stretch; border: 1px solid rgba(56, 189, 248, 0.30); border-radius: 32px; background: linear-gradient(135deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.82)); padding: 26px; box-shadow: var(--shadow); }
+    .project-visual { min-height: 385px; border-radius: 24px; background: linear-gradient(rgba(2,6,23,0.18), rgba(2,6,23,0.9)), radial-gradient(circle at 20% 20%, rgba(56,189,248,0.35), transparent 34%), radial-gradient(circle at 82% 70%, rgba(34,197,94,0.18), transparent 28%), #0f172a; border: 1px solid var(--border); display: grid; place-items: center; position: relative; overflow: hidden; }
+    .project-visual::after { content: ""; position: absolute; inset: 24px; border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 20px; }
+    .visual-stack { position: relative; z-index: 2; width: 78%; display: grid; gap: 14px; }
+    .visual-card { padding: 16px; border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.24); background: rgba(2, 6, 23, 0.76); display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 0.9rem; }
+    .visual-card strong { color: var(--text); }
+    .status { color: var(--green); font-weight: 900; }
+    .project h3 { font-size: 2rem; letter-spacing: -0.04em; margin-bottom: 12px; }
+    .project p { color: var(--muted); margin-bottom: 16px; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 22px; }
+    .tag { padding: 7px 11px; border-radius: 999px; background: rgba(56, 189, 248, 0.10); border: 1px solid rgba(56, 189, 248, 0.22); color: #bae6fd; font-size: 0.85rem; font-weight: 800; }
+    .feature-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    .feature-item { display: flex; gap: 10px; color: var(--muted); font-size: 0.94rem; }
+    .feature-item i { color: var(--accent); margin-top: 4px; }
+
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { display: grid; grid-template-columns: 190px 1fr; gap: 18px; padding: 22px; border-radius: 24px; border: 1px solid var(--border); background: rgba(15, 23, 42, 0.72); }
+    .timeline-date { color: var(--accent); font-weight: 900; }
+    .timeline-item h3 { margin-bottom: 6px; }
+    .timeline-item p, .timeline-item li { color: var(--muted); font-size: 0.96rem; }
+    .timeline-item ul { margin-left: 18px; margin-top: 8px; }
+
+    .achievement-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .achievement { padding: 20px; border-radius: 22px; background: var(--card-2); border: 1px solid var(--border); }
+    .achievement strong { display: block; color: var(--accent); font-size: 1.35rem; margin-bottom: 6px; }
+    .achievement span { color: var(--muted); font-size: 0.92rem; }
+
+    .contact-card { border-radius: 32px; border: 1px solid rgba(56, 189, 248, 0.28); background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(15, 23, 42, 0.86)); padding: 36px; display: flex; align-items: center; justify-content: space-between; gap: 20px; box-shadow: var(--shadow); }
+    .contact-card h2 { margin-bottom: 8px; }
+    .contact-card p { color: var(--muted); max-width: 650px; }
+    footer { padding: 26px 0 34px; color: var(--muted); border-top: 1px solid var(--border); text-align: center; font-size: 0.9rem; }
+
+    @media (max-width: 980px) {
+      .hero-grid, .project { grid-template-columns: 1fr; }
+      .cards-grid, .achievement-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .timeline-item { grid-template-columns: 1fr; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1140px); }
+      .hero { padding-top: 64px; }
+      .stats, .cards-grid, .feature-list, .achievement-grid { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Prina Pandya portfolio home">
+        <span class="brand-mark">PP</span>
+        <span>Prina Pandya</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#project">Project</a>
+        <a href="#experience">Experience</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><i class="fa-solid fa-shield-halved"></i> Computer Science Undergraduate · Digital Technology</div>
+          <h1>Junior Developer with a <span>forensic-tech</span> mindset.</h1>
+          <p class="hero-subtitle">
+            Analytical and motivated Computer Science undergraduate with hands-on experience in software development, databases, data analysis, machine learning fundamentals, web development, digital technologies, and client-facing technical environments.
+          </p>
+          <div class="role-strip">
+            <span class="role-pill">Junior Software Developer</span>
+            <span class="role-pill">IT Support Assistant</span>
+            <span class="role-pill">Data Analyst</span>
+            <span class="role-pill">Web & Digital Technology Assistant</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#project"><i class="fa-solid fa-folder-open"></i> View Featured Project</a>
+            <a class="btn btn-secondary" href="https://github.com/Prinaaa30" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a class="btn btn-secondary" href="mailto:pandyaprina30@gmail.com"><i class="fa-solid fa-envelope"></i> Contact Me</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>100/100</strong><span>Database Design & Implementation</span></div>
+            <div class="stat"><strong>84%</strong><span>Fundamentals of Computer Science</span></div>
+            <div class="stat"><strong>7.5</strong><span>IELTS Academic Overall Band</span></div>
+            <div class="stat"><strong>FYP</strong><span>Digital Forensic Investigation System</span></div>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="developer terminal card">
+          <div class="terminal">
+            <div class="terminal-header"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+            <div class="terminal-body">
+              <p><span class="cmd">$</span> profile --name</p>
+              <p>Prina Pandya</p>
+              <p><span class="cmd">$</span> target_roles</p>
+              <p>Junior Software Developer · IT Support Assistant · Data Analyst · Web & Digital Technology Assistant</p>
+              <p><span class="cmd">$</span> core_stack</p>
+              <p>Python · Flask · SQL · HTML/CSS · Java · GitHub · Agile · ML Basics</p>
+              <p><span class="cmd">$</span> status</p>
+              <p class="success">Open to graduate-level opportunities</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="label">About</div>
+          <h2>Building practical systems with clean logic, clear documentation, and user-focused design.</h2>
+          <p>
+            I am a BSc (Hons) Computer Science undergraduate at De Montfort University with strong interests in software development, cybersecurity, digital forensics, databases, data analysis, and digital technology. I enjoy solving problems, learning quickly, adapting to technical environments, and turning ideas into working systems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="label">Skills</div>
+          <h2>A balanced technical profile for software, data, web and support roles.</h2>
+          <p>My portfolio connects academic computing knowledge with practical project delivery, digital technology, communication and technical troubleshooting.</p>
+        </div>
+        <div class="cards-grid">
+          <div class="card"><div class="icon"><i class="fa-solid fa-code"></i></div><h3>Programming</h3><p>Python, Java OOP, C, PHP, C#, JavaScript basics, Scala and ASPX.</p><div class="skill-cloud"><span class="skill">Python</span><span class="skill">Java</span><span class="skill">C</span><span class="skill">PHP</span><span class="skill">C#</span><span class="skill">Scala</span></div></div>
+          <div class="card"><div class="icon"><i class="fa-solid fa-window-restore"></i></div><h3>Web & Digital Technology</h3><p>HTML, CSS, Flask, Wix, responsive layout improvement, SEO, Canva content and web optimisation.</p><div class="skill-cloud"><span class="skill">Flask</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">Wix</span><span class="skill">SEO</span></div></div>
+          <div class="card"><div class="icon"><i class="fa-solid fa-database"></i></div><h3>Databases & Data</h3><p>SQL, MySQL, MariaDB, SQLite, ERDs, normalisation, KPI reporting, SWOT analysis and data cleaning.</p><div class="skill-cloud"><span class="skill">SQL</span><span class="skill">MySQL</span><span class="skill">MariaDB</span><span class="skill">SQLite</span><span class="skill">ERDs</span></div></div>
+          <div class="card"><div class="icon"><i class="fa-solid fa-robot"></i></div><h3>AI & Machine Learning</h3><p>Machine learning foundations, Generative AI, AI foundations, TF-IDF, Logistic Regression and AI-assisted workflows.</p></div>
+          <div class="card"><div class="icon"><i class="fa-solid fa-shield"></i></div><h3>Cybersecurity & Systems</h3><p>Wireshark, Linux fundamentals, operating systems, RBAC, SHA-256 evidence integrity and audit trails.</p></div>
+          <div class="card"><div class="icon"><i class="fa-solid fa-people-group"></i></div><h3>Professional Skills</h3><p>Agile methodology, SDLC, technical documentation, presentation delivery, troubleshooting and customer communication.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="container">
+        <div class="section-heading">
+          <div class="label">Featured Project</div>
+          <h2>FIS Case Management System.</h2>
+          <p>A final year project combining full-stack development, digital forensic workflows, cybersecurity concepts, AI support and machine learning risk classification.</p>
+        </div>
+        <div class="project">
+          <div class="project-visual" aria-label="FIS project visual dashboard mockup">
+            <div class="visual-stack">
+              <div class="visual-card"><strong>Evidence Hash</strong><span class="status">Verified</span></div>
+              <div class="visual-card"><strong>Risk Level</strong><span class="status">Medium</span></div>
+              <div class="visual-card"><strong>Chain of Custody</strong><span class="status">Logged</span></div>
+              <div class="visual-card"><strong>Case Report</strong><span class="status">Ready</span></div>
+            </div>
+          </div>
+          <div>
+            <h3>Digital Forensic Investigation Platform</h3>
+            <p>
+              A web-based forensic case management platform developed using Flask and SQLite. It centralises investigation workflows including case creation, evidence upload, SHA-256 integrity verification, chain of custody tracking, timeline analysis, network analysis, AI-assisted reconstruction, machine learning risk classification and PDF report generation.
+            </p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQLite</span><span class="tag">Scikit-learn</span><span class="tag">TF-IDF</span><span class="tag">Logistic Regression</span><span class="tag">D3.js</span><span class="tag">Chart.js</span><span class="tag">Three.js</span><span class="tag">ReportLab</span>
+            </div>
+            <div class="feature-list">
+              <div class="feature-item"><i class="fa-solid fa-check"></i><span>Role-based dashboards for administrator, investigator and trainee users.</span></div>
+              <div class="feature-item"><i class="fa-solid fa-check"></i><span>Evidence upload with restricted file types, metadata and SHA-256 verification.</span></div>
+              <div class="feature-item"><i class="fa-solid fa-check"></i><span>Chain of custody logs for evidence actions, users and timestamps.</span></div>
+              <div class="feature-item"><i class="fa-solid fa-check"></i><span>Machine learning risk classification with confidence and explanation output.</span></div>
+              <div class="feature-item"><i class="fa-solid fa-check"></i><span>Network, timeline, OSINT, similar case and link analysis features.</span></div>
+              <div class="feature-item"><i class="fa-solid fa-check"></i><span>AI reconstruction, suspect sketch generation, 3D scene training and PDF reporting.</span></div>
+            </div>
+            <div class="hero-actions" style="margin-top: 24px; margin-bottom: 0;">
+              <a class="btn btn-primary" href="https://github.com/Prinaaa30" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> View GitHub</a>
+              <a class="btn btn-secondary" href="mailto:pandyaprina30@gmail.com"><i class="fa-solid fa-paper-plane"></i> Discuss Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading"><div class="label">Education</div><h2>Academic background.</h2></div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">Sept 2023 – Present</div><div><h3>BSc (Hons) Computer Science — De Montfort University, Leicester</h3><p>Studied software development, algorithms, data structures, database design, big data and machine learning.</p><ul><li>Achieved 100/100 in Database Design & Implementation.</li><li>Scored 84% in Fundamentals of Computer Science.</li><li>Delivered a professional presentation on AI in Business to the Graduate Recruiting Director.</li></ul></div></div>
+          <div class="timeline-item"><div class="timeline-date">2021 – 2023</div><div><h3>Higher Secondary — St. Xavier’s School, Gujarat</h3><p>Achieved 91%.</p></div></div>
+          <div class="timeline-item"><div class="timeline-date">2011 – 2021</div><div><h3>High School — Mount Carmel School, Gujarat</h3><p>Achieved 90%.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading"><div class="label">Experience</div><h2>Technical, digital and customer-facing experience.</h2><p>My work experience demonstrates communication, organisation, website improvement, KPI reporting, SEO, teamwork and operational reliability.</p></div>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-date">Sept 2025 – Jan 2026</div><div><h3>English Tutor & Administrator — Bright Learning Centre, Leicester</h3><ul><li>Delivered English lessons across A2–B1, ISE, B1 and IELTS preparation.</li><li>Managed enquiries, student registration, payments, appointment scheduling and documentation.</li><li>Supported centre operations through accurate organisation and communication.</li></ul></div></div>
+          <div class="timeline-item"><div class="timeline-date">June 2025 – July 2025</div><div><h3>Social Media & Information Officer Intern — ACE Internships / XY Fertility, Leicester</h3><ul><li>Rebuilt the company website using Wix, improving layout and mobile responsiveness.</li><li>Created Canva content, scheduled social posts and supported digital marketing planning.</li><li>Applied SEO strategies, produced KPI reporting and delivered a SWOT analysis to guide decisions.</li></ul></div></div>
+          <div class="timeline-item"><div class="timeline-date">Jan 2025 – Present</div><div><h3>Crew Member — McDonald’s, Abbey Lane, Leicester</h3><ul><li>Delivered fast and accurate customer service in a high-demand environment.</li><li>Supported workflow, teamwork, quality and efficiency during busy operations.</li></ul></div></div>
+          <div class="timeline-item"><div class="timeline-date">Dec 2023 – Feb 2025</div><div><h3>Customer Assistant — Domino’s Pizza, Loughborough</h3><ul><li>Managed customer orders and service interactions with accuracy and professionalism.</li><li>Contributed to a 15% increase in customer satisfaction through proactive service.</li></ul></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-heading"><div class="label">Certifications</div><h2>Continuous learning through LinkedIn Learning.</h2><p>Python Programming · Generative AI · Cybersecurity Fundamentals · Digital Marketing · Machine Learning Foundations · Artificial Intelligence Foundations · Project Management.</p></div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="container">
+        <div class="section-heading"><div class="label">Achievements</div><h2>Academic and personal highlights.</h2></div>
+        <div class="achievement-grid">
+          <div class="achievement"><strong>100/100</strong><span>Database Design & Implementation</span></div>
+          <div class="achievement"><strong>Silver</strong><span>Regional Physics Quiz Competition</span></div>
+          <div class="achievement"><strong>Sports</strong><span>Represented school in regional basketball tournaments</span></div>
+          <div class="achievement"><strong>IELTS 7.5</strong><span>Speaking 8.5 · Listening 8 · Reading 6.5 · Writing 6.5</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <h2>Open to graduate-level opportunities.</h2>
+            <p>I am seeking roles in junior software development, IT support, data analysis, and web or digital technology where I can apply technical skills, communicate clearly and continue growing professionally.</p>
+          </div>
+          <div class="hero-actions" style="margin: 0;">
+            <a class="btn btn-primary" href="mailto:pandyaprina30@gmail.com"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            <a class="btn btn-secondary" href="https://github.com/Prinaaa30" target="_blank" rel="noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Prina Pandya · Leicester, UK.</div>
+  </footer>
+</body>
+</html>
